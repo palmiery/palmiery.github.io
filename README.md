@@ -1,2 +1,2 @@
 # palmiery.github.io
-Testanto armazenamento de site em Git Hub
+Testanto publicação de site em Git Hub

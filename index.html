@@ -2,82 +2,195 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-  <!-- Título do Site -->  
-    <title>Renato Campos</title>
-    <style type="text/css">
-            body {background-color: skyblue; }
-            h1 {background-color: yellow; }
-            p {background-color: yellowgreen; }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renato Campos - Em Desenvolvimento</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #4e73df, #1cc88a);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header {
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header img {
+            border-radius: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ffffff;
+            margin: 0 10px;
+            padding: 10px 15px;
+            background-color: #6c757d;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #495057;
+        }
+
+        form {
+            margin: 20px auto;
+            max-width: 400px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        input[type="text"], input[type="password"], textarea {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        button {
+            background-color: #4e73df;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #375a7f;
+        }
+
+        table {
+            margin: 20px auto;
+            width: 90%;
+            border-collapse: collapse;
+            text-align: left;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        iframe {
+            margin-top: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
     </style>
 </head>
-
-    <header><h1>Em desenvolvimento</h1>
-        <hr>
-        <img src="imagens/stars.jpg" width=100% height="150" alt="Globo da Web">
-        <hr>
-        <H2>Conteúdo do Site</H2>
-        <hr>
-    </header><br>
+<body>
+    <header>
+        <h1>Em Desenvolvimento</h1>
+        <img src="imagens/stars.jpg" alt="Globo da Web" width="100%" height="150">
+        <h2>Conteúdo do Site</h2>
+    </header>
 
     <p id="Paragrafo-principal">
-        Olá, seja bem vindo! Em breve mais informações no site.
+        Olá, seja bem-vindo! Em breve mais informações no site.
     </p>
 
+    <nav>
+        <a href="https://palmiery.github.io/" target="_blank">Início</a>
+        <a href="https://www.youtube.com/" target="_blank">Vídeos</a>
+        <a href="#" target="_blank">Tutoriais</a>
+        <a href="#" target="_blank">Cursos</a>
+    </nav>
 
-    <h2>
-        <nav>
-            <a href="https://palmiery.github.io/" >Início</a> |
-            <a href="https://www.youtube.com/" target="_blank">Vídeos</a> |
-            <a href="" target="_blank">Tutoriais</a> |
-            <a href="" target="_blank">Cursos</a>
-        </nav>
-    </h2>
-    <br>
-    <form method="post" action="#">
-        <label for="nome">Nome:</label><br>
-        <input id="nome"type="text" size="25" placeholder="Digite seu nome.">
-        <br><!--Label vinculada-->
-        <label for="campo-senha">Senha:</label><br>
-        <input id="campo-senha"type="password" size="25" placeholder="Digite sua senha.">
-        <br>
-        <button type="submit" value="Enviar" disabled>Entrar</button>
+    <form id="loginForm">
+        <label for="nome">Nome:</label>
+        <input id="nome" type="text" placeholder="Digite seu nome.">
 
+        <label for="campo-senha">Senha:</label>
+        <input id="campo-senha" type="password" placeholder="Digite sua senha.">
+
+        <button type="button" id="entrarButton">Entrar</button>
     </form>
 
-    <br><br>
-
     <section>
-        <!-- Tabelas -->  
-        <table border="1"> 
-            <tr>
-                <th>Cidades</th>
-                <th>UF</th>
-                <th>Previsão do Tempo</th>
-            </tr>
-            <tr>
-                <b><td>Natal<br>Parnamirim<br>Macaíba<br>São Gonçalo do Amarante<br>João Câmara</td>
-                <td>RN<br>RN<br>RN<br>RN<br>RN</td>
-                <td><a href="https://www.climatempo.com.br/previsao-do-tempo/15-dias/cidade/334/natal-rn" target="_blank">Clique para ver a previsão</a><br><a href="https://www.climatempo.com.br/previsao-do-tempo/cidade/2593/parnamirim-rn" target="_blank">Clique para ver a previsão</a><br><a href="https://www.climatempo.com.br/previsao-do-tempo/15-dias/cidade/1373/macaiba-rn" target="_blank">Clique para ver a previsão</a><br><a href="https://www.climatempo.com.br/previsao-do-tempo/cidade/2594/saogoncalodoamarante-rn" target="_blank">Clique para ver a previsão</a><br><a href="https://www.climatempo.com.br/previsao-do-tempo/15-dias/cidade/6310/joaocamara-rn" target="_blank">Clique para ver a previsão</a></td>
-            </tr>
-   
+        <table>
+            <thead>
+                <tr>
+                    <th>Cidades</th>
+                    <th>UF</th>
+                    <th>Previsão do Tempo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Natal</td>
+                    <td>RN</td>
+                    <td><a href="https://www.climatempo.com.br/previsao-do-tempo/15-dias/cidade/334/natal-rn" target="_blank">Ver previsão</a></td>
+                </tr>
+                <tr>
+                    <td>Parnamirim</td>
+                    <td>RN</td>
+                    <td><a href="https://www.climatempo.com.br/previsao-do-tempo/cidade/2593/parnamirim-rn" target="_blank">Ver previsão</a></td>
+                </tr>
+            </tbody>
         </table>
-
     </section>
-    <br>
+
     <section>
-        <form method="post" action="#">
-            Envie sua mensagem<br>
-            <textarea name="mensagem" rows="10" cols="45" placeholder="Digite sua mensagem aqui."></textarea><br>
+        <form>
+            <label for="mensagem">Envie sua mensagem</label>
+            <textarea id="mensagem" rows="5" placeholder="Digite sua mensagem aqui."></textarea>
             <button type="button">Enviar</button>
-         </form>  
-
+        </form>
     </section>
-    
 
-<body>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/JMGlmJyeU7Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    
+
+    <footer>
+        <p>&copy; 2024 Renato Campos. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('entrarButton').addEventListener('click', () => {
+            const nome = document.getElementById('nome').value;
+            const senha = document.getElementById('campo-senha').value;
+
+            if (nome && senha) {
+                alert(`Bem-vindo, ${nome}!`);
+            } else {
+                alert('Por favor, preencha todos os campos.');
+            }
+        });
+    </script>
 </body>
-
-
 </html>

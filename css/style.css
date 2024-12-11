@@ -1,0 +1,791 @@
+/* Página inicial - Arquivo CSS: css/style.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+}
+
+/* Centraliza o texto no cabeçalho */
+header {
+    display: flex; /* Ativa o Flexbox */
+    flex-direction: column; /* Alinha elementos em coluna */
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    background-color: #add8e6; /* Cor de fundo do cabeçalho */
+    height: 150px; /* Altura do cabeçalho */
+    text-align: center; /* Centraliza o texto internamente */
+}
+
+/* Estiliza o texto da tagline */
+.tagline p {
+    font-size: 1.8rem; /* Tamanho maior para o texto */
+    color: #333; /* Cor do texto */
+    margin: 0; /* Remove margens extras */
+}
+
+
+.logo {
+    font-size: 3.5em;
+    font-weight: bold;
+    color: white;
+    background-color: #3e8db8;
+    border-radius: 50%;
+    padding: 10px;
+    text-align: center;
+    width: 300px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar {
+    width: 250px;
+    padding: 15px;
+    background-color: #ffffff;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+    height: auto;
+    position: absolute;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #0077b6;
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+.main-content {
+    margin-left: 270px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.link-box {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    width: calc(25% - 10px);
+}
+
+.link-box img {
+    max-width: 30%;
+    height: auto;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #add8e6;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9em;
+}
+
+/* Estilização do botão de login */
+.login-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.btn-login {
+    padding: 10px 20px;
+    background-color: #0077b6;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-login:hover {
+    background-color: #005f8a;
+}
+
+
+/*página de login*/
+
+
+
+<style>
+        /* Estilo adicional */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form h1 {
+            margin-bottom: 10px;
+        }
+
+        .login-form label {
+            text-align: left;
+            width: 100%;
+        }
+
+        .login-form input {
+            width: 96%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn-login:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn-back:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+/* Resetando o margin e padding do body */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Estilo do cabeçalho */
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0077b6;
+    color: white;
+    height: 150px;
+    text-align: center;
+}
+
+/*Cor do nome "The simple and easy to use freelance."*/
+.tagline p {
+    font-size: 1.8rem;
+    color: white;
+    margin: 0;
+    padding: 10;
+    font-weight: bold; /* Deixa o texto em negrito */
+}
+/*Menu*/
+.main-nav {
+    background-color: #0076b615;
+    display: flex;
+    justify-content: center;  /* Centraliza os itens do menu */
+    padding: 1px 0;
+    width: 100%;              /* Garante que o menu ocupe toda a largura da página */
+    position: relative;
+    top: 0;
+}
+
+.main-nav ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item {
+    position: relative;
+    padding: 10px 20px;
+}
+
+.menu-item > a {
+    color: #0077b6;
+    text-decoration: none;
+    font-size: 1.7rem;
+    display: block;
+    padding: 10px;
+    font-weight: normal;  /* Inicialmente sem negrito */
+    transition: all 0.3s ease;  /* Transição suave para todas as propriedades */
+    font-family: 'Lato', sans-serif;
+
+
+
+}
+
+.menu-item:hover > a {
+    background-color: #005f8a;
+    border-radius: 5px;
+    font-weight: bold;  /* Coloca o texto em negrito ao passar o mouse */
+    color: white; /* Alterar a cor do texto para branco durante o hover */
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 200px;
+    z-index: 10;
+    opacity: 0; /* Inicialmente escondido */
+    transition: opacity 0.3s ease; /* Transição suave para a exibição do submenu */
+}
+
+.submenu li {
+    padding: 10px;
+}
+
+.submenu li a {
+    color: #0077b6;
+    text-decoration: none;
+    display: block;
+}
+
+.submenu li a:hover {
+    background-color: #f4f4f9;
+}
+
+.menu-item:hover .submenu {
+    display: block;
+    opacity: 1; /* Torna o submenu visível com transição */
+}
+
+
+
+/* Estilo da seção do carousel */
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Estilo dos itens do carousel */
+.carousel-container {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Cada item do carousel */
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Estilo para as imagens dentro do carousel */
+.carousel-item img {
+    width: 5%; /* Ajuste a largura do tamanho original ou qualquer valor desejado */
+    max-width: 500px; /* Limite máximo de largura */
+    height: auto; /* Mantém a proporção original da imagem */
+    margin: 0 auto; /* Centraliza a imagem */
+}
+
+/* Estilo para os indicadores (bolinhas) */
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Estilo individual de cada bolinha */
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo da bolinha ativa */
+.indicator.active {
+    background-color: #010107;
+}
+
+/* Estilo das bolinhas ao passar o mouse */
+.indicator:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+/* Estilo da seção de parceiros e redes sociais */
+.partners-and-social {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    background-color: #f4f4f4;
+}
+
+/* Estilo da seção de parceiros */
+.partners {
+    width: 45%;
+}
+
+.partners h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.partners ul {
+    list-style: none;
+    padding: 0;
+}
+
+.partners ul li {
+    margin: 10px 0;
+}
+
+.partners ul li a {
+    text-decoration: none;
+    color: #0066cc;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.partners ul li a:hover {
+    color: #004b8f;
+}
+
+/*seção institucional dentro do rodape*/
+
+/* Estilo do corpo e html */
+html, body {
+    height: 100%; /* Garantir que o corpo e a página ocupem toda a altura */
+    margin: 0; /* Remover margens padrão */
+    display: flex; /* Usar flexbox para garantir que o conteúdo ocupe toda a altura */
+    flex-direction: column; /* Colocar os elementos em uma coluna */
+}
+
+/* Seção principal do conteúdo */
+main {
+    flex: 1; /* Isso faz o conteúdo principal ocupar todo o espaço disponível */
+    
+}
+
+/* Estilo do rodapé */
+footer {
+    background-color: #0077b6; /* Cor de fundo do rodapé */
+    color: #fff; /* Texto branco */
+    font-family: Arial, sans-serif;
+    padding: 30px 0;
+    text-align: center;
+    margin-top: 0; /* Garantir que não há espaço acima */
+    position: relative; /* O rodapé ficará após o conteúdo */
+    height: auto;
+}
+
+/* Seção institucional dentro do rodapé */
+.footer-links {
+    background-color: #add8e6;  /* Cor de fundo semelhante ao site da UFRN */
+    padding: 10px 0;
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px; /* Pequena margem para separar do conteúdo do rodapé */
+    height: 170px;
+}
+
+/* Container para organizar o conteúdo */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 10px;
+    align-items: baseline;
+
+}
+
+/* Estilo das colunas */
+.footer-partners,
+.footer-social-media {
+    width: 45%;
+}
+
+/* Estilo dos títulos */
+.footer-partners h3,
+.footer-social-media h3 {
+    font-size: 1.3rem;
+    color: #0077b6;  /* Cor de destaque para os títulos */
+    margin-bottom: 15px;
+}
+
+/* Estilo das listas */
+.footer-partners ul,
+.footer-social-media ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Estilo dos itens das listas */
+.footer-partners ul li,
+.footer-social-media ul li {
+    margin: 8px 0;
+}
+
+/* Links */
+.footer-partners a,
+.footer-social-media a {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.footer-partners a:hover,
+.footer-social-media a:hover {
+    color: #004b8f;  /* Cor mais escura ao passar o mouse */
+}
+
+/* Estilo do contato */
+.footer-contact {
+    text-align: center;
+    margin-top: 30px;
+    color: #333;
+    font-size: 1rem;
+}
+
+.footer-contact a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.footer-contact a:hover {
+    color: #0077b6;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-partners, .footer-social-media {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+
+/*botao logout*/
+.btn-logout {
+    background-color: #005f8a; /* Cor de fundo azul */
+    color: white;              /* Cor do texto */
+    text-decoration: none;     /* Remover underline do link */
+    padding: 10px 20px;        /* Padding para o botão */
+    border-radius: 5px;        /* Bordas arredondadas */
+    font-size: 1rem;           /* Tamanho da fonte */
+    transition: background-color 0.3s ease; /* Efeito de transição */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.btn-logout:hover {
+    background-color: #005f8a; /* Cor de fundo ao passar o mouse */
+}
+
+
+/*mensagem da pagina inicial para fazer login*/
+
+#login-message {
+    display: none; /* A mensagem está oculta por padrão */
+    color: red;
+    padding: 20px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    position: fixed;   /* Fixa a mensagem na tela */
+    top: 50%;          /* Centraliza verticalmente */
+    left: 50%;         /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%);  /* Ajuste para garantir o centro exato */
+    z-index: 1000;     /* Garante que a mensagem apareça acima de outros elementos */
+    width: auto;
+    max-width: 400px;  /* Limita a largura máxima da mensagem */
+    text-align: center; /* Centraliza o texto */
+    height: 10%;
+}
+
+
+/*página cadastrar-empresa*/
+
+
+/* Corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Contêiner que envolve o formulário para centralização */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150vh;  /* A altura total da janela */
+    flex-direction: column;
+}
+
+
+
+/* Estilo do Formulário */
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #0077b6;
+}
+
+/* Inputs e Textarea */
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Estilo do botão */
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efeito hover no botão */
+button:hover {
+    background-color: #005f8f;
+}
+
+/* Estilo de foco nos inputs */
+input:focus, textarea:focus {
+    border-color: #0077b6;
+    outline: none;
+}
+
+/* Melhorando o layout responsivo */
+@media (max-width: 600px) {
+    form {
+        width: 90%;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+}
+
+
+/*página gerenciar-empresas*/
+
+
+/* Estilo para a seção de listagem de empresas */
+.empresa-list {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #0077b6;
+    color: white;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #d32f2f;
+}
+
+/* Botão de voltar */
+.btn-back {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 20%;
+}
+
+.btn-back:hover {
+    background-color: #005f8f;
+}
+
+/*pagina faqs*/
+
+.faq-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.faq-item {
+    margin-bottom: 15px;
+}
+
+.faq-item h3 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.faq-item p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+/*pagina politica de privacidade*/
+
+.privacidade-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    line-height: 1.8;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.privacidade-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.privacidade-container h3 {
+    margin-top: 20px;
+    color: #555;
+}
+
+.privacidade-container p {
+    color: #666;
+    font-size: 16px;
+}
+
+

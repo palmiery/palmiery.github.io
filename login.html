@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Freelancer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>Freelancer</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="login-form">
+            <h1>Login</h1>
+            <form id="loginForm">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+                <p></p>
+                <button type="submit" class="btn-login">Entrar</button>
+            </form>
+
+            <!-- Botão de Voltar -->
+            <button class="btn-back" onclick="window.history.back();">Voltar</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Freelancer. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Validação do formulário com JavaScript
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Impede o envio do formulário padrão
+
+            // Dados de login
+            const usuarioCorreto = "user";
+            const senhaCorreta = "user";
+
+            // Obtém os valores dos campos
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Verifica se o usuário e a senha estão corretos
+            if (username === usuarioCorreto && password === senhaCorreta) {
+                // Redireciona para a página pos-login.html
+                window.location.href = "pos-login.html";
+            } else {
+                // Exibe uma mensagem de erro caso o login falhe
+                alert("Usuário ou senha incorretos. Tente novamente.");
+            }
+        });
+    </script>
+</body>
+</html>

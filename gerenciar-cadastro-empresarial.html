@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Funcionários</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>Freelancer</span>
+        </div>
+        <div class="tagline">
+            <p><span>Gerenciar Funcionários</span></p>
+        </div>
+        <div class="logout-button">
+            <a href="index.html" class="btn-logout">Logout</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="funcionario-list">
+            <h2>Funcionários Cadastrados</h2>
+
+            <!-- Tabela de Funcionários -->
+            <table id="funcionarioTable">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>CPF</th>
+                        <th>Cargo</th>
+                        <th>Departamento</th>
+                        <th>E-mail</th>
+                        <th>Telefone</th>
+                        <th>Endereço</th>
+                        <th>Data de Admissão</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Os funcionários cadastrados serão exibidos aqui -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Botão de Voltar -->
+        <button class="btn-back" onclick="window.history.back();">Voltar</button>
+    </main>
+
+    <footer>
+        <p>© 2024 Freelancer. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Recupera os dados do LocalStorage
+            const funcionarios = JSON.parse(localStorage.getItem('funcionarios')) || [];
+
+            // Verifica se existem funcionários cadastrados
+            if (funcionarios.length === 0) {
+                alert("Não há funcionários cadastrados.");
+            } else {
+                const funcionarioTableBody = document.querySelector('#funcionarioTable tbody');
+                
+                // Exibe os funcionários na tabela
+                funcionarios.forEach((funcionario, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${funcionario.nome}</td>
+                        <td>${funcionario.idade}</td>
+                        <td>${funcionario.cpf}</td>
+                        <td>${funcionario.cargo}</td>
+                        <td>${funcionario.departamento}</td>
+                        <td>${funcionario.email}</td>
+                        <td>${funcionario.telefone}</td>
+                        <td>${funcionario.endereco}</td>
+                        <td>${funcionario.dataAdmissao}</td>
+                        <td><button class="delete-btn" onclick="deleteFuncionario(${index})">Excluir</button></td>
+                    `;
+                    funcionarioTableBody.appendChild(row);
+                });
+            }
+        });
+
+        // Função para excluir funcionário
+        function deleteFuncionario(index) {
+            const confirmDelete = confirm("Tem certeza que deseja excluir este funcionário?");
+            if (confirmDelete) {
+                const funcionarios = JSON.parse(localStorage.getItem('funcionarios')) || [];
+                funcionarios.splice(index, 1); // Remove o funcionário selecionado
+                localStorage.setItem('funcionarios', JSON.stringify(funcionarios)); // Atualiza o LocalStorage
+                location.reload(); // Recarrega a página
+            }
+        }
+    </script>
+</body>
+</html>

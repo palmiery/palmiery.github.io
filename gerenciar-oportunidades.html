@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Oportunidades</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>Freelancer</span>
+        </div>
+        <div class="tagline">
+            <p><span>Gerenciar Oportunidades</span></p>
+        </div>
+        <div class="logout-button">
+            <a href="index.html" class="btn-logout">Logout</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="oportunidade-list">
+            <h2>Oportunidades Cadastradas</h2>
+
+            <!-- Tabela de Oportunidades -->
+            <table id="oportunidadeTable">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Descrição</th>
+                        <th>Empresa</th>
+                        <th>Localização</th>
+                        <th>Tipo</th>
+                        <th>Salário</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- As oportunidades cadastradas serão exibidas aqui -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Botão de Voltar -->
+        <button class="btn-back" onclick="window.history.back();">Voltar</button>
+    </main>
+
+    <footer>
+        <p>© 2024 Freelancer. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Recupera os dados do LocalStorage
+            const oportunidades = JSON.parse(localStorage.getItem('oportunidades')) || [];
+
+            // Verifica se existem oportunidades cadastradas
+            if (oportunidades.length === 0) {
+                alert("Não há oportunidades cadastradas.");
+            } else {
+                const oportunidadeTableBody = document.querySelector('#oportunidadeTable tbody');
+                
+                // Exibe as oportunidades na tabela
+                oportunidades.forEach((oportunidade, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${oportunidade.titulo}</td>
+                        <td>${oportunidade.descricao}</td>
+                        <td>${oportunidade.empresa}</td>
+                        <td>${oportunidade.localizacao}</td>
+                        <td>${oportunidade.tipo}</td>
+                        <td>${oportunidade.salario}</td>
+                        <td><button class="delete-btn" onclick="deleteOportunidade(${index})">Excluir</button></td>
+                    `;
+                    oportunidadeTableBody.appendChild(row);
+                });
+            }
+        });
+
+        // Função para excluir oportunidade
+        function deleteOportunidade(index) {
+            const confirmDelete = confirm("Tem certeza que deseja excluir esta oportunidade?");
+            if (confirmDelete) {
+                const oportunidades = JSON.parse(localStorage.getItem('oportunidades')) || [];
+                oportunidades.splice(index, 1); // Remove a oportunidade selecionada
+                localStorage.setItem('oportunidades', JSON.stringify(oportunidades)); // Atualiza o LocalStorage
+                location.reload(); // Recarrega a página
+            }
+        }
+    </script>
+</body>
+</html>

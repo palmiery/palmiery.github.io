@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seja Membro - Freelancer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <!-- Cabeçalho com logo Freelancer -->
+    <header>
+        <div class="logo">
+            <span>Freelancer</span>
+        </div>
+        <div class="logout-button">
+            <a href="index.html" class="btn-logout">Logout</a>
+        </div>
+    </header>
+
+    <!-- Contêiner para centralizar o conteúdo -->
+    <div class="form-container">
+        <h2>Seja um Membro da Freelancer</h2>
+        <p>Junte-se à nossa comunidade e aproveite todos os benefícios exclusivos oferecidos aos membros. Como membro, você terá acesso a oportunidades exclusivas de emprego, parcerias, dicas de carreira e muito mais!</p>
+
+        <h3>Vantagens de ser um membro:</h3>
+        <ul>
+            <li>Acesso a vagas exclusivas de emprego e parcerias de empresas cadastradas.</li>
+            <li>Descontos especiais em cursos e eventos relacionados à sua área de atuação.</li>
+            <li>Suporte dedicado para o desenvolvimento da sua carreira profissional.</li>
+            <li>Networking com outros profissionais e empresas do setor.</li>
+            <li>Acesso a conteúdo educacional e recursos de treinamento.</li>
+        </ul>
+
+        <h3>Como se tornar um membro:</h3>
+        <p>Para se tornar um membro, basta preencher o formulário abaixo e concluir o seu cadastro. Após o cadastro, você terá acesso imediato a todas as funcionalidades e benefícios oferecidos.</p>
+
+        <!-- Formulário de inscrição -->
+        <form id="form-seja-membro">
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" required>
+
+            <label for="email">E-mail</label>
+            <input type="email" id="email" required>
+
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" required>
+
+            <label for="confirmar-senha">Confirmar Senha</label>
+            <input type="password" id="confirmar-senha" required>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+
+        <p>Já é membro? <a href="login.html">Clique aqui para fazer login</a></p>
+
+        <!-- Botão Voltar -->
+        <button class="btn-back" onclick="window.history.back();">Voltar</button>
+
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2024 Freelancer. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('form-seja-membro').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio do formulário
+
+            // Obtendo os dados do formulário
+            const membro = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                senha: document.getElementById('senha').value,
+            };
+
+            // Recupera os dados existentes do LocalStorage ou cria um array vazio
+            const membros = JSON.parse(localStorage.getItem('membros')) || [];
+
+            // Adiciona o novo membro ao array
+            membros.push(membro);
+
+            // Armazena o array atualizado de membros no LocalStorage
+            localStorage.setItem('membros', JSON.stringify(membros));
+
+            // Limpa o formulário
+            this.reset();
+
+            alert("Cadastro realizado com sucesso! Bem-vindo à nossa comunidade.");
+
+            // Redireciona para a página de login ou para outra página
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>

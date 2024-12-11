@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Oportunidades</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <!-- Cabeçalho com logo Freelancer -->
+    <header>
+        <div class="logo">
+            <span>Freelancer</span>
+        </div>
+        <div class="logout-button">
+            <a href="index.html" class="btn-logout">Logout</a>
+        </div>
+    </header>
+
+    <!-- Contêiner para centralizar o conteúdo -->
+    <div class="form-container">
+        <h2>Cadastrar Oportunidade</h2>
+        <form id="form-cadastro-oportunidade">
+            <label for="titulo">Título da Oportunidade</label>
+            <input type="text" id="titulo" required>
+
+            <label for="empresa">Empresa</label>
+            <input type="text" id="empresa" required>
+
+            <label for="localizacao">Localização</label>
+            <input type="text" id="localizacao" required>
+
+            <label for="tipo">Tipo de Contrato</label>
+            <select id="tipo" required>
+                <option value="">Selecione</option>
+                <option value="CLT">CLT</option>
+                <option value="PJ">PJ</option>
+                <option value="Estágio">Estágio</option>
+                <option value="Freelancer">Freelancer</option>
+            </select>
+
+            <label for="salario">Faixa Salarial</label>
+            <input type="text" id="salario" required>
+
+            <label for="descricao">Descrição da Oportunidade</label>
+            <textarea id="descricao" required></textarea>
+
+            <label for="requisitos">Requisitos</label>
+            <textarea id="requisitos" required></textarea>
+
+            <label for="beneficios">Benefícios</label>
+            <textarea id="beneficios"></textarea>
+
+            <button type="submit">Cadastrar</button>
+
+            <!-- Botão Voltar -->
+            <button class="btn-back" onclick="window.history.back();">Voltar</button>
+        </form>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2024 Freelancer. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('form-cadastro-oportunidade').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio do formulário
+    
+            // Obtendo os dados do formulário
+            const oportunidade = {
+                titulo: document.getElementById('titulo').value,
+                empresa: document.getElementById('empresa').value,
+                localizacao: document.getElementById('localizacao').value,
+                tipo: document.getElementById('tipo').value,
+                salario: document.getElementById('salario').value,
+                descricao: document.getElementById('descricao').value,
+                requisitos: document.getElementById('requisitos').value,
+                beneficios: document.getElementById('beneficios').value,
+            };
+    
+            // Recupera os dados existentes do LocalStorage ou cria um array vazio
+            const oportunidades = JSON.parse(localStorage.getItem('oportunidades')) || [];
+    
+            // Adiciona a nova oportunidade ao array
+            oportunidades.push(oportunidade);
+    
+            // Armazena o array atualizado de oportunidades no LocalStorage
+            localStorage.setItem('oportunidades', JSON.stringify(oportunidades));
+    
+            // Limpa o formulário
+            this.reset();
+    
+            alert("Oportunidade cadastrada com sucesso!");
+    
+            // Redireciona para a página pos-login.html
+            window.location.href = "pos-login.html";
+        });
+    </script>
+    
+</body>
+</html>

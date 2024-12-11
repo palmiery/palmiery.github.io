@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Parceiros</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>Freelancer</span>
+        </div>
+        <div class="tagline">
+            <p><span>Gerenciar Parceiros</span></p>
+        </div>
+        <div class="logout-button">
+            <a href="index.html" class="btn-logout">Logout</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="parceiro-list">
+            <h2>Parceiros Cadastrados</h2>
+
+            <!-- Tabela de Parceiros -->
+            <table id="parceiroTable">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF/CNPJ</th>
+                        <th>Área de Atuação</th>
+                        <th>E-mail</th>
+                        <th>Telefone</th>
+                        <th>Endereço</th>
+                        <th>Cidade</th>
+                        <th>CEP</th>
+                        <th>Site/Rede Social</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Os parceiros cadastrados serão exibidos aqui -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Botão de Voltar -->
+        <button class="btn-back" onclick="window.history.back();">Voltar</button>
+    </main>
+
+    <footer>
+        <p>© 2024 Freelancer. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Recupera os dados do LocalStorage
+            const parceiros = JSON.parse(localStorage.getItem('parceiros')) || [];
+
+            // Verifica se existem parceiros cadastrados
+            if (parceiros.length === 0) {
+                alert("Não há parceiros cadastrados.");
+            } else {
+                const parceiroTableBody = document.querySelector('#parceiroTable tbody');
+                
+                // Exibe os parceiros na tabela
+                parceiros.forEach((parceiro, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${parceiro.nome}</td>
+                        <td>${parceiro.cpfCnpj}</td>
+                        <td>${parceiro.areaAtuacao}</td>
+                        <td>${parceiro.email}</td>
+                        <td>${parceiro.telefone}</td>
+                        <td>${parceiro.endereco}</td>
+                        <td>${parceiro.cidade}</td>
+                        <td>${parceiro.cep}</td>
+                        <td><a href="${parceiro.site}" target="_blank">${parceiro.site}</a></td>
+                        <td><button class="delete-btn" onclick="deleteParceiro(${index})">Excluir</button></td>
+                    `;
+                    parceiroTableBody.appendChild(row);
+                });
+            }
+        });
+
+        // Função para excluir parceiro
+        function deleteParceiro(index) {
+            const confirmDelete = confirm("Tem certeza que deseja excluir este parceiro?");
+            if (confirmDelete) {
+                const parceiros = JSON.parse(localStorage.getItem('parceiros')) || [];
+                parceiros.splice(index, 1); // Remove o parceiro selecionado
+                localStorage.setItem('parceiros', JSON.stringify(parceiros)); // Atualiza o LocalStorage
+                location.reload(); // Recarrega a página
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Membros - Freelancer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <!-- Cabeçalho com logo Freelancer -->
+    <header>
+        <div class="logo">
+            <span>Freelancer</span>
+        </div>
+        <div class="logout-button">
+            <a href="index.html" class="btn-logout">Logout</a>
+        </div>
+    </header>
+
+    <!-- Contêiner para centralizar o conteúdo -->
+    <div class="form-container">
+        <h2>Membros Cadastrados</h2>
+
+        <!-- Tabela de Membros -->
+        <table id="membroTable">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Data de Cadastro</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Os membros cadastrados serão exibidos aqui -->
+            </tbody>
+        </table>
+
+        <!-- Botão de Voltar -->
+        <button class="btn-back" onclick="window.history.back();">Voltar</button>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2024 Freelancer. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Recupera os dados dos membros do LocalStorage
+            const membros = JSON.parse(localStorage.getItem('membros')) || [];
+
+            // Verifica se existem membros cadastrados
+            if (membros.length === 0) {
+                alert("Não há membros cadastrados.");
+            } else {
+                const membroTableBody = document.querySelector('#membroTable tbody');
+                
+                // Exibe os membros na tabela
+                membros.forEach((membro, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${membro.nome}</td>
+                        <td>${membro.email}</td>
+                        <td>${new Date().toLocaleDateString()}</td> <!-- Exibe a data de cadastro atual -->
+                        <td><button class="delete-btn" onclick="deleteMembro(${index})">Excluir</button></td>
+                    `;
+                    membroTableBody.appendChild(row);
+                });
+            }
+        });
+
+        // Função para excluir membro
+        function deleteMembro(index) {
+            const confirmDelete = confirm("Tem certeza que deseja excluir este membro?");
+            if (confirmDelete) {
+                const membros = JSON.parse(localStorage.getItem('membros')) || [];
+                membros.splice(index, 1); // Remove o membro selecionado
+                localStorage.setItem('membros', JSON.stringify(membros)); // Atualiza o LocalStorage
+                location.reload(); // Recarrega a página
+            }
+        }
+    </script>
+</body>
+</html>

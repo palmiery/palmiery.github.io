@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastrar Empresa</title>
+        <link rel="stylesheet" href="css/style.css"> <!-- Link para o CSS -->
+        <script src="js/script.js" defer></script>
+    </head>
+    
+<body>
+    <!-- Cabeçalho com logo Freelancer -->
+    <header>
+        <div class="logo">
+            <span>Freelancer</span>
+        </div>
+        <div class="logout-button">
+            <a href="index.html" class="btn-logout">Logout</a>
+        </div>
+    </header>
+
+    <!-- Contêiner para centralizar o conteúdo -->
+    <div class="form-container">
+       
+        <h2>Cadastrar Empresa</h2>
+        <form id="form-cadastro-empresa">
+            <label for="nome">Nome da Empresa</label>
+            <input type="text" id="nome" required>
+
+            <label for="cnpj">CNPJ</label>
+            <input type="text" id="cnpj" required>
+
+            <label for="setor">Setor</label>
+            <input type="text" id="setor" required>
+
+            <label for="inscricao-estadual">Inscrição Estadual</label>
+            <input type="text" id="inscricao-estadual" required>
+
+            <label for="descricao">Descrição</label>
+            <textarea id="descricao" required></textarea>
+
+            <label for="endereco">Endereço</label>
+            <input type="text" id="endereco" required>
+
+            <label for="cidade">Cidade</label>
+            <input type="text" id="cidade" required>
+
+            <label for="cep">CEP</label>
+            <input type="text" id="cep" required>
+
+            <label for="site">Site</label>
+            <input type="url" id="site" required>
+
+            <button type="submit">Cadastrar</button>
+
+            <!-- Botão Voltar -->
+        <button class="btn-back" onclick="window.history.back();">Voltar</button>
+        </form>
+
+       
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2024 Freelancer. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('form-cadastro-empresa').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio do formulário
+
+            // Obtendo os dados do formulário
+            const empresa = {
+                nome: document.getElementById('nome').value,
+                cnpj: document.getElementById('cnpj').value,
+                setor: document.getElementById('setor').value,
+                inscricaoEstadual: document.getElementById('inscricao-estadual').value,
+                descricao: document.getElementById('descricao').value,
+                endereco: document.getElementById('endereco').value,
+                cidade: document.getElementById('cidade').value,
+                cep: document.getElementById('cep').value,
+                site: document.getElementById('site').value,
+            };
+
+            // Recupera os dados existentes do LocalStorage ou cria um array vazio
+            const empresas = JSON.parse(localStorage.getItem('empresas')) || [];
+
+            // Adiciona a nova empresa ao array
+            empresas.push(empresa);
+
+            // Armazena o array atualizado de empresas no LocalStorage
+            localStorage.setItem('empresas', JSON.stringify(empresas));
+
+
+
+            // Limpa o formulário
+            this.reset();
+        });
+    </script>
+</body>
+</html>

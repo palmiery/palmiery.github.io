@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Currículo</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- Link para o CSS -->
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <!-- Cabeçalho com logo Freelancer -->
+    <header>
+        <div class="logo">
+            <span>Freelancer</span>
+        </div>
+        <div class="logout-button">
+            <a href="index.html" class="btn-logout">Logout</a>
+        </div>
+    </header>
+
+    <!-- Contêiner para centralizar o conteúdo -->
+    <div class="form-container">
+        <h2>Cadastrar Currículo</h2>
+        <form id="form-cadastro-curriculo">
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" required>
+
+            <label for="idade">Idade</label>
+            <input type="number" id="idade" required>
+
+            <label for="cpf">CPF</label>
+            <input type="text" id="cpf" required>
+
+            <label for="email">E-mail</label>
+            <input type="email" id="email" required>
+
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" required>
+
+            <label for="endereco">Endereço</label>
+            <input type="text" id="endereco" required>
+
+            <label for="formacao">Formação Acadêmica</label>
+            <input type="text" id="formacao" required>
+
+            <label for="experiencia">Experiência Profissional</label>
+            <textarea id="experiencia" placeholder="Descreva as experiências profissionais..." required></textarea>
+
+            <label for="habilidades">Habilidades</label>
+            <textarea id="habilidades" placeholder="Liste suas principais habilidades..." required></textarea>
+
+            <label for="idiomas">Idiomas</label>
+            <input type="text" id="idiomas" placeholder="Ex.: Inglês fluente, Espanhol básico" required>
+
+            <button type="submit">Cadastrar Currículo</button>
+
+            <!-- Botão Voltar -->
+            <button class="btn-back" onclick="window.history.back();">Voltar</button>
+        </form>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2024 Freelancer. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('form-cadastro-curriculo').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio do formulário
+
+            // Obtendo os dados do formulário
+            const curriculo = {
+                nome: document.getElementById('nome').value,
+                idade: document.getElementById('idade').value,
+                cpf: document.getElementById('cpf').value,
+                email: document.getElementById('email').value,
+                telefone: document.getElementById('telefone').value,
+                endereco: document.getElementById('endereco').value,
+                formacao: document.getElementById('formacao').value,
+                experiencia: document.getElementById('experiencia').value,
+                habilidades: document.getElementById('habilidades').value,
+                idiomas: document.getElementById('idiomas').value
+            };
+
+            // Recupera os dados existentes do LocalStorage ou cria um array vazio
+            const curriculos = JSON.parse(localStorage.getItem('curriculos')) || [];
+
+            // Adiciona o novo currículo ao array
+            curriculos.push(curriculo);
+
+            // Armazena o array atualizado de currículos no LocalStorage
+            localStorage.setItem('curriculos', JSON.stringify(curriculos));
+
+            // Limpa o formulário
+            this.reset();
+
+            alert("Currículo cadastrado com sucesso!");
+
+            // Redireciona para a página "pos-login.html"
+            window.location.href = "pos-login.html";
+        });
+    </script>
+</body>
+</html>

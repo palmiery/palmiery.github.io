@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vagas Disponíveis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <!-- Cabeçalho com logo Freelancer -->
+    <header>
+        <div class="logo">
+            <span>Freelancer</span>
+        </div>
+        <div class="logout-button">
+            <a href="index.html" class="btn-logout">Logout</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="vagas-container">
+            <h2>Vagas Disponíveis</h2>
+
+            <!-- Tabela para listar oportunidades -->
+            <table id="vagasTable">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Empresa</th>
+                        <th>Localização</th>
+                        <th>Tipo</th>
+                        <th>Salário</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- As oportunidades cadastradas serão exibidas aqui -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Botão Voltar -->
+        <button class="btn-back" onclick="window.history.back();">Voltar</button>
+    </main>
+
+    <footer>
+        <p>© 2024 Freelancer. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Recupera as oportunidades do LocalStorage
+            const oportunidades = JSON.parse(localStorage.getItem('oportunidades')) || [];
+
+            // Verifica se há vagas disponíveis
+            if (oportunidades.length === 0) {
+                alert("Não há vagas disponíveis no momento.");
+            } else {
+                const vagasTableBody = document.querySelector('#vagasTable tbody');
+
+                // Exibe as vagas na tabela
+                oportunidades.forEach((oportunidade, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${oportunidade.titulo}</td>
+                        <td>${oportunidade.empresa}</td>
+                        <td>${oportunidade.localizacao}</td>
+                        <td>${oportunidade.tipo}</td>
+                        <td>${oportunidade.salario}</td>
+                        <td>
+                            <button class="apply-btn" onclick="candidatar(${index})">Enviar Currículo</button>
+                        </td>
+                    `;
+                    vagasTableBody.appendChild(row);
+                });
+            }
+        });
+
+        // Função para realizar candidatura
+        function candidatar(index) {
+            alert("Candidatura realizada com sucesso! Aguarde o contato.");
+        }
+    </script>
+</body>
+</html>

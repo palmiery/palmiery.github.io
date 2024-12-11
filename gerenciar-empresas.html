@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Empresas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>Freelancer</span>
+        </div>
+        <div class="tagline">
+            <p><span>Gerenciar Empresas</span></p>
+        </div>
+        <div class="logout-button">
+            <a href="index.html" class="btn-logout">Logout</a>
+        </div>
+    </header>
+
+
+
+    <main>
+        <section class="empresa-list">
+            <h2>Empresas Cadastradas</h2>
+
+            <!-- Tabela de Empresas -->
+            <table id="empresaTable">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CNPJ</th>
+                        <th>Setor de Atuação</th>
+                        <th>Inscrição Estadual</th>
+                        <th>Descrição</th>
+                        <th>Endereço</th>
+                        <th>Cidade</th>
+                        <th>CEP</th>
+                        <th>Site</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- As empresas cadastradas serão exibidas aqui -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Botão de Voltar -->
+        <button class="btn-back" onclick="window.history.back();">Voltar</button>
+    </main>
+
+    <footer>
+        <p>© 2024 Freelancer. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Recupera os dados do LocalStorage
+            const empresas = JSON.parse(localStorage.getItem('empresas')) || [];
+
+            // Verifica se existem empresas cadastradas
+            if (empresas.length === 0) {
+                alert("Não há empresas cadastradas.");
+            } else {
+                const empresaTableBody = document.querySelector('#empresaTable tbody');
+                
+                // Exibe as empresas na tabela
+                empresas.forEach((empresa, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${empresa.nome}</td>
+                        <td>${empresa.cnpj}</td>
+                        <td>${empresa.setor}</td>
+                        <td>${empresa.inscricaoEstadual}</td>
+                        <td>${empresa.descricao}</td>
+                        <td>${empresa.endereco}</td>
+                        <td>${empresa.cidade}</td>
+                        <td>${empresa.cep}</td>
+                        <td><a href="${empresa.site}" target="_blank">${empresa.site}</a></td>
+                        <td><button class="delete-btn" onclick="deleteEmpresa(${index})">Excluir</button></td>
+                    `;
+                    empresaTableBody.appendChild(row);
+                });
+            }
+        });
+
+        // Função para excluir empresa
+        function deleteEmpresa(index) {
+            const confirmDelete = confirm("Tem certeza que deseja excluir esta empresa?");
+            if (confirmDelete) {
+                const empresas = JSON.parse(localStorage.getItem('empresas')) || [];
+                empresas.splice(index, 1); // Remove a empresa selecionada
+                localStorage.setItem('empresas', JSON.stringify(empresas)); // Atualiza o LocalStorage
+                location.reload(); // Recarrega a página
+            }
+        }
+    </script>
+</body>
+</html>

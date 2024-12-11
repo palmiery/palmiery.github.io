@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Currículos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>Freelancer</span>
+        </div>
+        <div class="tagline">
+            <p><span>Gerenciar Currículos</span></p>
+        </div>
+        <div class="logout-button">
+            <a href="index.html" class="btn-logout">Logout</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="curriculo-list">
+            <h2>Currículos Cadastrados</h2>
+
+            <!-- Tabela de Currículos -->
+            <table id="curriculoTable">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>CPF</th>
+                        <th>E-mail</th>
+                        <th>Telefone</th>
+                        <th>Endereço</th>
+                        <th>Formação</th>
+                        <th>Experiência</th>
+                        <th>Habilidades</th>
+                        <th>Idiomas</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Os currículos cadastrados serão exibidos aqui -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Botão de Voltar -->
+        <button class="btn-back" onclick="window.history.back();">Voltar</button>
+    </main>
+
+    <footer>
+        <p>© 2024 Freelancer. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Recupera os dados do LocalStorage
+            const curriculos = JSON.parse(localStorage.getItem('curriculos')) || [];
+
+            // Verifica se existem currículos cadastrados
+            if (curriculos.length === 0) {
+                alert("Não há currículos cadastrados.");
+            } else {
+                const curriculoTableBody = document.querySelector('#curriculoTable tbody');
+                
+                // Exibe os currículos na tabela
+                curriculos.forEach((curriculo, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${curriculo.nome}</td>
+                        <td>${curriculo.idade}</td>
+                        <td>${curriculo.cpf}</td>
+                        <td>${curriculo.email}</td>
+                        <td>${curriculo.telefone}</td>
+                        <td>${curriculo.endereco}</td>
+                        <td>${curriculo.formacao}</td>
+                        <td>${curriculo.experiencia}</td>
+                        <td>${curriculo.habilidades}</td>
+                        <td>${curriculo.idiomas}</td>
+                        <td><button class="delete-btn" onclick="deleteCurriculo(${index})">Excluir</button></td>
+                    `;
+                    curriculoTableBody.appendChild(row);
+                });
+            }
+        });
+
+        // Função para excluir currículo
+        function deleteCurriculo(index) {
+            const confirmDelete = confirm("Tem certeza que deseja excluir este currículo?");
+            if (confirmDelete) {
+                const curriculos = JSON.parse(localStorage.getItem('curriculos')) || [];
+                curriculos.splice(index, 1); // Remove o currículo selecionado
+                localStorage.setItem('curriculos', JSON.stringify(curriculos)); // Atualiza o LocalStorage
+                location.reload(); // Recarrega a página
+            }
+        }
+    </script>
+</body>
+</html>

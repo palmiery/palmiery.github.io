@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Funcionário</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- Link para o CSS -->
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <!-- Cabeçalho com logo Freelancer -->
+    <header>
+        <div class="logo">
+            <span>Freelancer</span>
+        </div>
+        <div class="logout-button">
+            <a href="index.html" class="btn-logout">Logout</a>
+        </div>
+    </header>
+
+    <!-- Contêiner para centralizar o conteúdo -->
+    <div class="form-container">
+        <h2>Cadastrar Funcionário</h2>
+        <form id="form-cadastro-funcionario">
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" required>
+
+            <label for="idade">Idade</label>
+            <input type="number" id="idade" required>
+
+            <label for="cpf">CPF</label>
+            <input type="text" id="cpf" required>
+
+            <label for="cargo">Cargo</label>
+            <input type="text" id="cargo" required>
+
+            <label for="departamento">Departamento</label>
+            <input type="text" id="departamento" required>
+
+            <label for="email">E-mail</label>
+            <input type="email" id="email" required>
+
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" required>
+
+            <label for="endereco">Endereço</label>
+            <input type="text" id="endereco" required>
+
+            <label for="data-admissao">Data de Admissão</label>
+            <input type="date" id="data-admissao" required>
+
+            <button type="submit">Cadastrar</button>
+
+            <!-- Botão Voltar -->
+            <button class="btn-back" onclick="window.history.back();">Voltar</button>
+        </form>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2024 Freelancer. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('form-cadastro-funcionario').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio do formulário
+
+            // Obtendo os dados do formulário
+            const funcionario = {
+                nome: document.getElementById('nome').value,
+                idade: document.getElementById('idade').value,
+                cpf: document.getElementById('cpf').value,
+                cargo: document.getElementById('cargo').value,
+                departamento: document.getElementById('departamento').value,
+                email: document.getElementById('email').value,
+                telefone: document.getElementById('telefone').value,
+                endereco: document.getElementById('endereco').value,
+                dataAdmissao: document.getElementById('data-admissao').value
+            };
+
+            // Recupera os dados existentes do LocalStorage ou cria um array vazio
+            const funcionarios = JSON.parse(localStorage.getItem('funcionarios')) || [];
+
+            // Adiciona o novo funcionário ao array
+            funcionarios.push(funcionario);
+
+            // Armazena o array atualizado de funcionários no LocalStorage
+            localStorage.setItem('funcionarios', JSON.stringify(funcionarios));
+
+            // Limpa o formulário
+            this.reset();
+
+            alert("Funcionário cadastrado com sucesso!");
+
+            // Redireciona para a página "pos-login.html"
+            window.location.href = "pos-login.html";
+        });
+    </script>
+</body>
+</html>
